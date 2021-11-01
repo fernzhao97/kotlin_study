@@ -14,9 +14,16 @@ class SquareCabin(residents: Int) : Dwelling(residents){
     
     
 }
-class RoundHut(residents: Int) : Dwelling(residents){
+// open makes RoundHut can be inherited from
+open class RoundHut(residents: Int) : Dwelling(residents){
     override val buildingMaterial = "Straw"
     override val capacity = 4
+
+
+}
+class RoundTower(residents: Int) : RoundHut(residents){
+    override val buildingMaterial = "Stone"
+    override val capacity = 1
 
 
 }
@@ -25,7 +32,7 @@ class RoundHut(residents: Int) : Dwelling(residents){
 fun main() {
     val squareCabin = SquareCabin(6)
     val RoundHut = RoundHut(3)
-
+    val RoundTower = RoundTower(1)
     with(squareCabin){
 
         println("squareCabin buildingMaterial is "+buildingMaterial)
@@ -38,6 +45,13 @@ fun main() {
         println("RoundHut buildingMaterial is "+buildingMaterial)
         println("RoundHut capacity is "+capacity)
         println("RoundHut has free room? "+hasRoom())
+
+    }
+    with(RoundTower){
+
+        println("RoundTower buildingMaterial is "+buildingMaterial)
+        println("RoundTower capacity is "+capacity)
+        println("RoundTower has free room? "+hasRoom())
 
     }
 }
